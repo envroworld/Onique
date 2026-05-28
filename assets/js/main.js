@@ -120,7 +120,8 @@ function btnComponent(){
 };
 function loaderComponent(){
     window.addEventListener("load", ()=>{
-        // document.querySelector(".loader").classList.remove("active");
+        if(!isStandalone()) return;
+        document.querySelector(".loader").classList.remove("active");
     });
 };
 function contextHandler(){
@@ -193,7 +194,7 @@ function isStandalone(){
 }
 function initDownloadApp(){
     let trigger = document.querySelector(".button.download-app");
-    if(isStandalone()) trigger.removeAttribute("style")
+    if(isStandalone()) trigger.removeAttribute("style");
     try{
         window.addEventListener("beforeinstallprompt", (e)=>{
             e.preventDefault()

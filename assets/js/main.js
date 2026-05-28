@@ -202,6 +202,7 @@ function initDownloadApp(){
     window.addEventListener("beforeinstallprompt", (e)=>{
         e.preventDefault()
         trigger.addEventListener("click", ()=>{
+            // console.log()
             if (!isIOS()){
                 e.prompt();
             }else{

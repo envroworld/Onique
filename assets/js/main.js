@@ -198,20 +198,21 @@ function feesComponent(){
 function initDownloadApp(){
     let trigger = document.querySelector(".button.download-app");
     if(!isStandalone()) trigger.removeAttribute("style");
-    if (!isIOS()){
-        window.addEventListener("beforeinstallprompt", (e)=>{
-            e.preventDefault()
-            trigger.addEventListener("click", ()=>{
+    
+    window.addEventListener("beforeinstallprompt", (e)=>{
+        e.preventDefault()
+        trigger.addEventListener("click", ()=>{
+            if (!isIOS()){
                 e.prompt();
-            })
+            }else{
+                navigator.share({
+                    title: "Onique",
+                    text: "Earn with referals!",
+                    url: window.location.href
+                })
+            }
         })
-    }else{
-        navigator.share({
-            title: "Onique",
-            text: "Earn with referals!",
-            url: window.location.href
-        })
-    }
+    })
 }
 
 

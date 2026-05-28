@@ -120,7 +120,7 @@ function btnComponent(){
 };
 function loaderComponent(){
     window.addEventListener("load", ()=>{
-        document.querySelector(".loader").classList.remove("active");
+        // document.querySelector(".loader").classList.remove("active");
     });
 };
 function contextHandler(){
@@ -185,10 +185,35 @@ function feesComponent(){
         })
     })
 }
+function isStandalone(){
+    return (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone == true
+    )
+}
+function initDownloadApp(){
+    let trigger = document.querySelector(".button.download-app");
+    if(isStandalone()) trigger.removeAttribute("style")
+    try{
+        window.addEventListener("beforeinstallprompt", (e)=>{
+            e.preventDefault()
+            trigger.addEventListener("click", ()=>{
+                e.prompt();
+            })
+        })
+    }catch{
+        navigator.share({
+            title: "Onique",
+            text: "Earn with referals!",
+            url: window.location.href
+        })
+    }
+}
 
 
 
 
+initDownloadApp();
 btnComponent();
 loaderComponent();
 contextHandler();

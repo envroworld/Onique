@@ -5,8 +5,11 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-inline: var(--g8);
+    /* gap: var(--g2); */
     z-index: 100;
     background: var(--bg) !important;
     pointer-events: none;
@@ -17,6 +20,10 @@
     transform: translateX(0%);
     pointer-events: unset;
     background-color: var(--bg);
+}
+.loader .button{
+    width: 60%;
+    margin-top: -5vh;
 }
 section.login{
     gap: var(--g2);

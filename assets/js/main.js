@@ -5,6 +5,9 @@ function isStandalone(){
         window.navigator.standalone == true
     )
 }
+function isIOS(){
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+}
 function formatDate(isoString) {
     const date = new Date(isoString);
 
@@ -195,14 +198,14 @@ function feesComponent(){
 function initDownloadApp(){
     let trigger = document.querySelector(".button.download-app");
     if(!isStandalone()) trigger.removeAttribute("style");
-    try{
+    if (!isIOS()){
         window.addEventListener("beforeinstallprompt", (e)=>{
             e.preventDefault()
             trigger.addEventListener("click", ()=>{
                 e.prompt();
             })
         })
-    }catch{
+    }else{
         navigator.share({
             title: "Onique",
             text: "Earn with referals!",

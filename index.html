@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="theme-color" content="#101111">
+    <meta name="apple-mobile-web-app-capable" content="true">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Onique">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/icons/rr/cdn.css">
+    <link rel="stylesheet" href="assets/icons/sr/cdn.css">
+    <link rel="stylesheet" href="assets/icons/brands/cdn.css">
+    <link rel="stylesheet" href="assets/styles/root.css">
+    <link rel="stylesheet" href="assets/styles/global.css">
+    <link rel="shortcut icon" href="assets/images/logo1.png" type="image/png">
+    <title>Onique</title>
+</head>
+<body style="background-color: var(--bg); display: flex; justify-content: center; align-items: center;">
+    <div class="loader active"><img class="logo" src="assets/images/logo3.png" style="width: 40%;margin-bottom: 5rem;" alt=""></div>
+    <section class="login">
+        <div style="flex: 1;">
+            <video preload="auto" autoplay playsinline webkit-playsinline muted loop style="max-width: 90vw;width: 120vw;scale: 1.5;mix-blend-mode:color-dodge;pointer-events: none;">
+                <source  src="assets/videos/onboard.mp4" type="video/mp4">
+            </video>
+            <script>
+                window.addEventListener("load", ()=>{
+                   let v = document.querySelector("video");
+                //    v.play()
+                   v.muted = true;
+                   v.playsInline = true;
+                   setTimeout(()=>{
+                       v.play().catch(e => {alert(e)})
+                   }, 5000)
+                })
+            </script>
+        </div>
+        <img class="logo" src="assets/images/logo3.png" alt="">
+        <div class="input">
+            <p>🇹🇿 +255</p>
+            <input class="linker" type="text" placeholder="Phone eg. 7xxxxxx22" inputmode="numeric" maxlength="9">
+        </div>
+        <div class="button register"><p>Continue with Phone</p></div>
+        <p class="more"></p>
+        <div class="button" onclick="getAlert('Failed to connect to Google, Please try again later!')"><i class="fi fi-brands-google"></i><p>Continue with Google</p></div>
+        <div class="button" onclick="getAlert('Failed to connect to Github, Please try again later!')"><i class="fi fi-brands-github"></i><p>Continue with Github</p></div>
+        <div class="button" onclick="getAlert('Failed to connect to Apple, Please try again later!')"><i class="fi fi-brands-apple"></i><p>Continue with Apple</p></div>
+        <p class="dt" style="font-size: var(--f2);color: var(--tx-s2);">By hitting "Continue" you've agreed to the <span style="color: var(--cp);">Terms</span></p>
+    </section>
+
+    <section class="main abs">
+        <div class="top-half">
+            <div class="header">
+                <img src="assets/images/logo3.png" alt="">
+                <div class="flex">
+                    <i class="fi fi-rr-wallet" onclick="getPop('withdraw')"></i>
+                    <i class="fi fi-rr-link" onclick="copyShare(this)"></i>
+                    <img src="assets/images/dp/p1.jpeg" class="dPic master-dp" alt="">
+                </div>
+            </div>
+            <div class="balance">
+                <p class="math"><span class="loss">+2.56%</span><i class="fi fi-rr-eye">(Tzs. 2,100/-)</i></p>
+                <h2 currency="Tzs." class="mainBlc">
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                </h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <p>My Card</p>
+                    <i class="fi fi-rr-copy">0xfdd56..........893</i>
+                </div>
+            </div>
+            <div class="quick-stats">
+                <div class="stat">
+                    <i class="fi fi-rr-coins"></i>
+                    <p>Overall Earnings</p>
+                    <h3>Tzs. 4,240,000</h3>
+                </div>
+                <div class="stat">
+                    <i class="fi fi-rr-wallet"></i>
+                    <p>Overall Withdraws</p>
+                    <h3>Tzs. 340,000</h3>
+                </div>
+                <div class="stat">
+                    <i class="fi fi-rr-users"></i>
+                    <p>1<span>st</span> Round Refs</p>
+                    <h3>300</h3>
+                </div>
+                <div class="stat">
+                    <i class="fi fi-rr-users-alt"></i>
+                    <p>2<span>nd</span> Round Refs</p>
+                    <h3>34,000</h3>
+                </div>
+            </div>
+        </div>
+        <div class="transactions">
+            <p class="title" style="font-size: var(--f2);color: var(--tx-s2);text-align: center;">Recent Transactions</p>
+            <!-- <div class="tx-card">
+                <img src="assets/images/dp/p2.jpeg" alt="">
+                <p dt="April, 25th 18:00:00">+255734xxxx59</p>
+                <h3 class="loss">500/-</h3>
+            </div> -->
+        </div>
+    </section>
+
+    <section class="popups abs" style="background-color: var(--bg-s3);z-index: 10;">
+        <div class="popup otpVerify">
+            <div class="shut" onclick="shutPop('otpVerify')"></div>
+            <!-- <i class="fi fi-rr-otp">OTP Verification</i> -->
+            <p>Please provide the One-Time-Password ( OTP ), That was sent to your number. Didn't recieve code? <span>Resend.</span></p>
+            <div class="otpInput">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <input type="text" inputmode="numeric" maxlength="4">
+            </div>
+            <div class="button"><p>Confirm & Login</p></div>
+        </div>
+        <div class="popup withdraw">
+            <div class="shut" onclick="shutPop('withdraw')"></div>
+            <!-- <i class="fi fi-rr-otp">OTP Verification</i> -->
+            <p>Please make sure the amount is not less than Tzs. 40k or more than Tzs. 6.5M. Having trouble with withdraws? <span>Contact Support.</span></p>
+            <div class="input amount">
+                <p>Tzs.</p>
+                <input class="beforeFees" type="text" placeholder="Amount" inputmode="numeric">
+            </div>
+            <div class="amount-stats">
+                <p tag="Onique service fee (25%)">0.00/-</p>
+                <p tag="Transaction fee (5%)">0.00/-</p>
+                <p tag="Final Amount">0.00/-</p>
+            </div>
+            <div class="button"><p>Withdraw</p></div>
+        </div>
+    </section>
+
+    <i class="fi fi-rr-circle-exclamation-check alertMsg">This is an alert test message.</i>
+</body>
+<!-- <script>
+    document.body.addEventListener("click", ()=>{
+        console.log("hello")
+        document.querySelector("section.main").classList.toggle("active");
+    });
+</script> -->
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/api.js"></script>
+</html>

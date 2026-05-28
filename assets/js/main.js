@@ -1,4 +1,10 @@
 
+function isStandalone(){
+    return (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone == true
+    )
+}
 function formatDate(isoString) {
     const date = new Date(isoString);
 
@@ -186,15 +192,9 @@ function feesComponent(){
         })
     })
 }
-function isStandalone(){
-    return (
-        window.matchMedia('(display-mode: standalone)').matches ||
-        window.navigator.standalone == true
-    )
-}
 function initDownloadApp(){
     let trigger = document.querySelector(".button.download-app");
-    if(isStandalone()) trigger.removeAttribute("style");
+    if(!isStandalone()) trigger.removeAttribute("style");
     try{
         window.addEventListener("beforeinstallprompt", (e)=>{
             e.preventDefault()

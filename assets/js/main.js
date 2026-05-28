@@ -202,16 +202,15 @@ function initDownloadApp(){
     window.addEventListener("beforeinstallprompt", (e)=>{
         e.preventDefault()
         trigger.addEventListener("click", ()=>{
-            // console.log()
-            if (!isIOS()){
-                e.prompt();
-            }else{
-                navigator.share({
-                    title: "Onique",
-                    text: "Earn with referals!",
-                    url: window.location.href
-                })
-            }
+            e.prompt() 
+        });
+    })
+    trigger.addEventListener("click", ()=>{
+        if(!isIOS()) return;
+        navigator.share({
+            title: "Onique",
+            text: "Earn with referals!",
+            url: window.location.href
         })
     })
 }

@@ -2,7 +2,7 @@
     "name": "Onique",
     "short_name": "Onique",
     "start_url": "/",
-    "display": "fullscreen",
+    "display": "standalone",
     "background_color": "#101111",
     "theme_color": "#101111",
     "default_theme": "dark",

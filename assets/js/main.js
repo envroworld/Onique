@@ -145,8 +145,8 @@ function getReferralCode() {
     return null;
 }
 function initContext(){
-    document.body.addEventListener("contextmenu", (e)=>{
-        e.preventDefault();
+    document.body.addEventListener("click", (e)=>{
+        // e.preventDefault();
         getAlert(getReferralCode())
     })
 };

@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "space.onique.app.twa",
+        "sha256_cert_fingerprints": ["7C:99:2D:62:3D:35:41:91:86:16:3F:E1:DC:D9:BA:0C:A2:5D:A8:45:BD:D0:DD:0A:09:58:24:3E:64:DC:34:94"]
+      }
+    }]

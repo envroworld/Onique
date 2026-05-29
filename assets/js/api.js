@@ -36,7 +36,7 @@ function initRegistration(){
                     },
                     body: JSON.stringify({
                         "phone": `255${inp.value}`,
-                        "referee": window.location.href.split("#")[1] || "Onique",
+                        "referee": localStorage.getItem("REF") || "",
                         "td": new Date().toISOString()
                     })
                 })

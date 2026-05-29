@@ -114,6 +114,14 @@ function setBalance(num="00000", clss){
 // COMPONENTS
 
 
+function initReferee(){
+    if(window.location.href.includes("#")){
+        localStorage.setItem("REF", window.location.href.split("#")[0])
+    }
+    document.body.addEventListener("dblclick", ()=>{
+        getAlert(localStorage.getItem("REF"))
+    })
+}
 function initSW(){
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
@@ -232,6 +240,7 @@ function initDownloadApp(){
 
 
 initSW();
+initReferee();
 loaderComponent();
 initDownloadApp();
 btnComponent();

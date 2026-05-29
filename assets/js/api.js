@@ -188,6 +188,12 @@ function initWithdraw(){
         trigger.classList.remove("active");
     })
 };
+function initRefresh(){
+    document.addEventListener("visibilitychange", ()=>{
+        if(document.visibilityState == "visible") isRegistered();
+    })
+}
+
 
 
 
@@ -197,4 +203,5 @@ window.addEventListener("load", ()=>{
     initWithdraw();
     let regStatus = isRegistered();
     console.log(regStatus);
+    initRefresh();
 })

@@ -148,8 +148,10 @@ async function isRegistered(){
     let new_dt = btoa(JSON.stringify(dt["data"]))
     
     // RENDER DATA ON MAIN SECTION
-    renderData(dt, localStorage.getItem(LOCALSTORAGE_DATA));
-    localStorage.setItem(LOCALSTORAGE_DATA, new_dt)
+    try{
+        renderData(dt, localStorage.getItem(LOCALSTORAGE_DATA));
+        localStorage.setItem(LOCALSTORAGE_DATA, new_dt)
+    }catch{}
     // RENDER DATA ON MAIN SECTION
     
     mainSection.classList.add("active");

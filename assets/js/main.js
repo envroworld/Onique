@@ -217,10 +217,9 @@ function initDownloadApp(){
 
 
 
-
+loaderComponent();
 initDownloadApp();
 btnComponent();
-loaderComponent();
 contextHandler();
 otpComponent();
 blcComponent();

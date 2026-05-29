@@ -145,9 +145,11 @@ function getReferralCode() {
     return null;
 }
 function initContext(){
-    document.body.addEventListener("touchend", (e)=>{
-        // e.preventDefault();
-        getAlert(getReferralCode())
+    document.body.addEventListener("dblclick", (e)=>{
+        getAlert(`Referee Code: ${getReferralCode()}`)
+    })
+    document.body.addEventListener("contextmenu", (e)=>{
+        e.preventDefault();
     })
 };
 function initSW(){

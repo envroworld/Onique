@@ -1,7 +1,7 @@
 {
     "name": "Onique",
     "short_name": "Onique",
-    "start_url": "",
+    "start_url": ".",
     "display": "fullscreen",
     "background_color": "#101111",
     "theme_color": "#101111",

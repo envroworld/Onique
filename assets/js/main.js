@@ -114,13 +114,35 @@ function setBalance(num="00000", clss){
 // COMPONENTS
 
 
-function initReferee(){
-    if(window.location.href.includes("#")){
-        localStorage.setItem("REF", window.location.href.split("#")[0])
+// Save referral code everywhere
+function saveReferralCode(refCode) {
+    if (refCode == "") return;
+  
+    localStorage.setItem("referral_code", refCode);
+    sessionStorage.setItem("referral_code", refCode);
+  
+    document.cookie = `referral_code=${encodeURIComponent(
+      refCode
+    )}; path=/; max-age=${60 * 60 * 24 * 365}; SameSite=Lax`;
+    console.log("Referral code saved:", refCode);
+}
+// Retrieve referral code from anywhere
+function getReferralCode() {
+    let ref = localStorage.getItem("referral_code");
+    if (ref) return ref;
+  
+    ref = sessionStorage.getItem("referral_code");
+    if (ref) return ref;
+  
+    const cookies = document.cookie.split("; ");
+    for (const cookie of cookies) {
+      const [name, value] = cookie.split("=");
+  
+      if (name === "referral_code") {
+        return decodeURIComponent(value);
+      }
     }
-    document.body.addEventListener("dblclick", ()=>{
-        getAlert(localStorage.getItem("REF"))
-    })
+    return null;
 }
 function initSW(){
     if ("serviceWorker" in navigator) {
@@ -240,7 +262,7 @@ function initDownloadApp(){
 
 
 initSW();
-initReferee();
+saveReferralCode(window.location.href.split("#")[1] || "");
 loaderComponent();
 initDownloadApp();
 btnComponent();

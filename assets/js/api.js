@@ -36,7 +36,7 @@ function initRegistration(){
                     },
                     body: JSON.stringify({
                         "phone": `255${inp.value}`,
-                        "referee": localStorage.getItem("REF") || "",
+                        "referee": getReferralCode() || "",
                         "td": new Date().toISOString()
                     })
                 })

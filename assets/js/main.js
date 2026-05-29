@@ -145,7 +145,7 @@ function getReferralCode() {
     return null;
 }
 function initContext(){
-    document.body.addEventListener("click", (e)=>{
+    document.body.addEventListener("touchend", (e)=>{
         // e.preventDefault();
         getAlert(getReferralCode())
     })

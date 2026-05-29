@@ -1,7 +1,7 @@
 {
     "name": "Onique",
     "short_name": "Onique",
-    "start_url": ".",
+    "start_url": "/",
     "display": "fullscreen",
     "background_color": "#101111",
     "theme_color": "#101111",
@@ -14,5 +14,8 @@
         "sizes": "192x192",
         "type": "image/png"
       }
-    ]
+    ],
+    "description": "A FinTech Software made for enterpreneurs looking for funds through referal earnings and link sharing",
+    "start_url": ".",
+    "lang": "en"
 }  

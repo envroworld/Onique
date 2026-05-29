@@ -144,11 +144,17 @@ function getReferralCode() {
     }
     return null;
 }
+function initContext(){
+    document.body.addEventListener("contextmenu", (e)=>{
+        e.preventDefault();
+        getAlert(getReferralCode())
+    })
+};
 function initSW(){
     if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
             navigator.serviceWorker
-            .register("/service-worker.js")
+            .register("assets/js/sw.js")
             .then((registration) => {
                 console.log("Service Worker registered:", registration);
             })
@@ -261,9 +267,12 @@ function initDownloadApp(){
 }
 
 
+
+
+initContext()
+loaderComponent();
 initSW();
 saveReferralCode(window.location.href.split("#")[1] || "");
-loaderComponent();
 initDownloadApp();
 btnComponent();
 contextHandler();
@@ -271,6 +280,3 @@ otpComponent();
 blcComponent();
 amountComponent();
 feesComponent();
-document.body.addEventListener("dblclick", ()=>{
-    console.log(getReferralCode())
-})

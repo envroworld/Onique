@@ -71,6 +71,7 @@ function renderData(dt, prev){
     let transactionskEl = document.querySelector(".transactions");
 
     // TRANSACTIONS HANDLING
+    transactionskEl.innerHTML = `<p class="title" style="font-size: var(--f2);color: var(--tx-s2);text-align: center;">Recent Transactions</p>`
     dt.transactions.forEach(tr=>{
         // <div class="tx-card">
         //     <img src="assets/images/dp/p2.jpeg" alt="">

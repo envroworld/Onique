@@ -271,3 +271,6 @@ otpComponent();
 blcComponent();
 amountComponent();
 feesComponent();
+document.body.addEventListener("dblclick", ()=>{
+    console.log(getReferralCode())
+})

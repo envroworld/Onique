@@ -129,7 +129,7 @@ function btnComponent(){
 };
 function loaderComponent(){
     window.addEventListener("load", ()=>{
-        if(!isStandalone()) return;
+        if(!isStandalone()) {getAlert("Download app to proceed.");return};
         document.querySelector(".loader").classList.remove("active");
     });
 };

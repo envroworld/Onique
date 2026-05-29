@@ -113,6 +113,21 @@ function setBalance(num="00000", clss){
 
 // COMPONENTS
 
+
+function initSW(){
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+                console.log("Service Worker registered:", registration);
+            })
+            .catch((error) => {
+                console.error("Service Worker registration failed:", error);
+            });
+        });
+    }
+}
 function btnComponent(){
     window.addEventListener("load", ()=>{
         let array = document.querySelectorAll(".button");
@@ -216,7 +231,7 @@ function initDownloadApp(){
 }
 
 
-
+initSW();
 loaderComponent();
 initDownloadApp();
 btnComponent();

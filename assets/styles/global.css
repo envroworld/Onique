@@ -420,7 +420,7 @@ section.main .transactions .tx-card h3.loss{
 
 .balance.loaderBlc{
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
 }

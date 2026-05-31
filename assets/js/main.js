@@ -286,14 +286,14 @@ function initDownloadApp(){
             e.prompt() 
         });
     })
-    trigger.addEventListener("click", ()=>{
-        if(!isIOS()) return;
-        navigator.share({
-            title: "Onique",
-            text: "Earn with referals!",
-            url: window.location.href
-        })
-    })
+    // trigger.addEventListener("click", ()=>{
+    //     if(!isIOS()) return;
+    //     navigator.share({
+    //         title: "Onique",
+    //         text: "Earn with referals!",
+    //         url: window.location.href
+    //     })
+    // })
 }
 
 

@@ -96,6 +96,7 @@ function setBalance(num="00000", clss){
     num = String(num)
     let num_cm = numComma(num);
     let ps = document.querySelectorAll(`.balance h2.${clss} p`);
+    console.log(ps, num)
     ps.forEach((p, i)=>{
         if(i >= num.length){
             p.classList.add("off");
@@ -240,7 +241,7 @@ function feesComponent(){
         inp.addEventListener("keyup", ()=>{
             let amount = Math.round(Number(inp.value.replaceAll(",", "")));
             let fee1 = Math.ceil(amount) * 25 / 100;
-            let fee2 = Math.ceil(amount - fee1) * 10 / 100;
+            let fee2 = Math.ceil(amount - fee1) * 5 / 100;
 
             fees[0].textContent = numComma(fee1) + "/-";
             fees[1].textContent = numComma(fee2) + "/-";
@@ -248,9 +249,36 @@ function feesComponent(){
         })
     })
 }
+function initDownloads(){
+    let timeLine = String(new Date().getTime()).slice(4, 9);
+    console.log(timeLine)
+    setTimeout(()=>{setBalance(timeLine, "downloads")}, 2000)
+    
+    setInterval(()=>{
+        timeLine = String(new Date().getTime()).slice(4, 9)
+        setBalance(timeLine, "downloads")
+    }, (Math.random() * 10) * 10000)
+}
+function initWelcome(){
+    window.addEventListener("load", ()=>{
+        if(localStorage.getItem("NNISS") == "") return;
+        let trigger = document.querySelector(".popup.welcome .button");
+        let trigger1 = document.querySelector(".popup.welcome .shut");
+        trigger.addEventListener("click", ()=>{
+            localStorage.setItem("NNISS", "")
+        });
+        trigger1.addEventListener("click", ()=>{
+            localStorage.setItem("NNISS", "")
+        });
+
+        setTimeout(()=>{getPop("welcome")}, 2500)
+    })
+}
 function initDownloadApp(){
     let trigger = document.querySelector(".button.download-app");
-    if(!isStandalone()) trigger.removeAttribute("style");
+    let dCount = document.querySelector(".balance.loaderBlc");
+    initDownloads();
+    if(!isStandalone()) {trigger.removeAttribute("style");dCount.removeAttribute("style")}
     
     window.addEventListener("beforeinstallprompt", (e)=>{
         e.preventDefault()
@@ -271,7 +299,8 @@ function initDownloadApp(){
 
 
 
-initContext()
+initContext();
+initWelcome();
 loaderComponent();
 initSW();
 saveReferralCode(window.location.href.split("#")[1] || "");

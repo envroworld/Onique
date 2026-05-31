@@ -121,46 +121,46 @@ section.main .top-half .header i{
     align-items: center;
 }
 
-section.main .top-half .balance{
+.balance{
     display: flex;
     flex-direction: column;
     gap: var(--g2);
     padding-block: var(--g2);
     text-align: center;
 }
-section.main .top-half .balance p.math{
+.balance p.math{
     display: flex; 
     width: 100%;
     gap: var(--g1);
     justify-content: center;
     align-items: center;
 }
-section.main .top-half .balance p.math *{
+.balance p.math *{
     color: var(--tx-s2);
     font-size: var(--f2);
 }
-section.main .top-half .balance p.math span{
+.balance p.math span{
     color: var(--cp);
     filter: hue-rotate(250deg) brightness(1.8);
 }
-section.main .top-half .balance p.math i{
+.balance p.math i{
     display: flex;
     gap: var(--g2);
     align-items: center;
     flex-direction: row-reverse;
     font-style: normal;
 }
-section.main .top-half .balance p.math i::before{
+.balance p.math i::before{
     display: flex;
     align-items: center;
     padding-top: 3px;
 }
-section.main .top-half .balance h2{
+.balance h2{
     display: flex;
     justify-content: center;
     margin-top: -0.25rem;
 }
-section.main .top-half .balance h2 p{
+.balance h2 p{
     display: flex;
     flex-direction: column;
     word-break: break-all;
@@ -178,32 +178,32 @@ section.main .top-half .balance h2 p{
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
 }
-section.main .top-half .balance h2 p.off{
+.balance h2 p.off{
     width: 0vw;
     opacity: 0;
     transition: all 0.2s ease, width 0.3s 0.1s ease;
 }
-section.main .top-half .balance h2 p[state]{
+.balance h2 p[state]{
     width: var(--f8);
 }
-section.main .top-half .balance h2 p[state]:last-child{
+.balance h2 p[state]:last-child{
     width: 0rem !important;
 }
-section.main .top-half .balance h2 p span{
+.balance h2 p span{
     scroll-snap-align: center;
 }
 @keyframes stateIn{
     0%{opacity: 0;transform: translateX(-20%);}
     100%{opacity: 1;transform: translateX(0%);}
 }
-section.main .top-half .balance h2 p[state]::after{
+.balance h2 p[state]::after{
     content: attr(state);
     position: absolute;
     right: -0.35rem;
     top: calc(var(--topper) - 0.5rem);
     animation: stateIn 0.5s ease both;
 }
-section.main .top-half .balance h2 p[state]:last-child:after{
+.balance h2 p[state]:last-child:after{
     content: unset !important;
 }
 
@@ -411,5 +411,24 @@ section.main .transactions .tx-card h3.loss{
 }
 .popup.withdraw .amount-stats p::before{
     content: attr(tag);
+    font-size: var(--f2);
+}
+
+
+
+/* EXTRAS */
+
+.balance.loaderBlc{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.balance.loaderBlc h2{
+    scale: 0.5;
+    margin-top: -2.5vh;
+}
+.balance.loaderBlc p:not(h2 p){
+    color: var(--tx-s2);
     font-size: var(--f2);
 }

@@ -167,7 +167,7 @@ function initWithdraw(){
         trigger.classList.add("active");
         let amount = Number(inp.value.replaceAll(",", ""))
 
-        if(amount < 10000 || amount > 6500000){
+        if(amount < 4000 || amount > 6500000){
             trigger.classList.remove("active");
             getAlert("Error, Please enter a valid amount!"); 
             return

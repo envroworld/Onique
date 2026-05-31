@@ -62,10 +62,7 @@ function copyShare(el){
     let link = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)))["referal_code"] || "";
     link = `${window.location.origin}/#${link}`
 
-    try{
-        navigator.clipboard.writeText(link)
-    }
-    catch{
+    if(isIOS()){
         const txt = document.createElement("textarea");
         txt.value = link
 
@@ -78,6 +75,8 @@ function copyShare(el){
         try{document.execCommand("copy")}
         catch{}
         txt.remove()
+    }else{
+        navigator.clipboard.writeText(link)
     }
     getAlert("Copied link to clipboard. now paste and share!")
     el.className = "fi fi-rr-check";

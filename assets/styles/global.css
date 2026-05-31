@@ -23,7 +23,7 @@
 }
 .loader .button{
     width: 60%;
-    margin-top: -5vh;
+    margin-top: -7.5vh;
 }
 section.login{
     gap: var(--g2);

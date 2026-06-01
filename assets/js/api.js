@@ -62,7 +62,7 @@ function initRegistration(){
 };
 function renderData(dt, prev){
     let prevData
-    try{prevData = JSON.parse(atob(prev));}
+    try{prevData = JSON.parse(atob(prev)).data;}
     catch{prevData = dt.data}
     
     let percEl = document.querySelector(".balance .math span");
@@ -126,6 +126,15 @@ function renderData(dt, prev){
     }, 3000)
 };
 async function isRegistered(){
+    // RENDER DATA ON MAIN SECTION
+    try{
+        let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
+        renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
+        
+    }catch{}
+    // RENDER DATA ON MAIN SECTION
+
+
     let mainSection = document.querySelector("section.main");
     let phone = localStorage.getItem(LOCALSTORAGE_PHONE) || null;
     if(phone == null) return false
@@ -146,11 +155,11 @@ async function isRegistered(){
         })
     })
     let dt = await rq.json()
-    let new_dt = btoa(JSON.stringify(dt["data"]))
+    let new_dt = btoa(JSON.stringify(dt))
     
     // RENDER DATA ON MAIN SECTION
     try{
-        renderData(dt, localStorage.getItem(LOCALSTORAGE_DATA));
+        renderData(dt.data, localStorage.getItem(LOCALSTORAGE_DATA));
         localStorage.setItem(LOCALSTORAGE_DATA, new_dt)
     }catch{}
     // RENDER DATA ON MAIN SECTION

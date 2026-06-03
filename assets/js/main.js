@@ -239,7 +239,7 @@ function feesComponent(){
         let fees = document.querySelectorAll(".amount-stats p")
         inp.addEventListener("keyup", ()=>{
             let amount = Math.round(Number(inp.value.replaceAll(",", "")));
-            let fee1 = Math.ceil(amount) * 25 / 100;
+            let fee1 = Math.ceil(amount) * 20 / 100;
             let fee2 = Math.ceil(amount - fee1) * 5 / 100;
 
             fees[0].textContent = numComma(fee1) + "/-";

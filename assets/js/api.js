@@ -128,9 +128,9 @@ function renderData(dt, prev){
 async function isRegistered(){
     // RENDER DATA ON MAIN SECTION
     try{
+        console.log("testing old dt")
         let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
         renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
-        
     }catch{}
     // RENDER DATA ON MAIN SECTION
 
@@ -159,7 +159,7 @@ async function isRegistered(){
     
     // RENDER DATA ON MAIN SECTION
     try{
-        renderData(dt.data, localStorage.getItem(LOCALSTORAGE_DATA));
+        renderData(dt, localStorage.getItem(LOCALSTORAGE_DATA));
         localStorage.setItem(LOCALSTORAGE_DATA, new_dt)
     }catch{}
     // RENDER DATA ON MAIN SECTION

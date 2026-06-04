@@ -176,7 +176,7 @@ function initWithdraw(){
         trigger.classList.add("active");
         let amount = Number(inp.value.replaceAll(",", ""))
 
-        if(amount < 4000 || amount > 6500000){
+        if(amount < 10000 || amount > 6500000){
             trigger.classList.remove("active");
             getAlert("Error, Please enter a valid amount!"); 
             return
@@ -196,6 +196,7 @@ function initWithdraw(){
         getAlert(dt1.message)
         if(dt1.success) shutPop("withdraw")
         trigger.classList.remove("active");
+        isRegistered();
     })
 };
 function initRefresh(){
@@ -209,9 +210,9 @@ function initRefresh(){
 
 
 window.addEventListener("load", ()=>{
-    initRegistration();
-    initWithdraw();
     let regStatus = isRegistered();
     console.log(regStatus);
+    initRegistration();
+    initWithdraw();
     initRefresh();
 })

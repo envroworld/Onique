@@ -2,61 +2,70 @@
 
 const CACHE_NAME = "app-cache-v1";
 
-// Install event
 self.addEventListener("install", (event) => {
   console.log("Service Worker installing...");
-
   self.skipWaiting();
 });
 
-// Activate event
 self.addEventListener("activate", (event) => {
   console.log("Service Worker activated...");
 
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
             return caches.delete(cache);
           }
         })
-      );
-    })
+      )
+    )
   );
 
   self.clients.claim();
 });
 
-// Fetch event
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      // Return cached response if available
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+    caches.open(CACHE_NAME).then(async (cache) => {
+      const cachedResponse = await cache.match(event.request);
 
-      // Otherwise fetch from network
-      return fetch(event.request)
+      // Always fetch latest version in background
+      const networkFetch = fetch(event.request)
         .then((networkResponse) => {
-          // Clone response because it can only be used once
-          const responseClone = networkResponse.clone();
-
-          // Store in cache
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
+          if (
+            networkResponse &&
+            networkResponse.status === 200 &&
+            networkResponse.type === "basic"
+          ) {
+            cache.put(event.request, networkResponse.clone());
+          }
 
           return networkResponse;
         })
-        .catch(() => {
-          // Optional fallback
-          return new Response("Offline", {
-            status: 503,
-            statusText: "Offline",
-          });
-        });
+        .catch(() => null);
+
+      // Return cache immediately if available
+      if (cachedResponse) {
+        networkFetch; // Updates cache in background
+        return cachedResponse;
+      }
+
+      // No cache, wait for network
+      const networkResponse = await networkFetch;
+
+      if (networkResponse) {
+        return networkResponse;
+      }
+
+      return new Response("Offline", {
+        status: 503,
+        statusText: "Offline",
+      });
     })
   );
 });

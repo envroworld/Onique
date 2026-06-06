@@ -131,7 +131,7 @@ async function isRegistered(){
         console.log("testing old dt")
         let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
         renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
-        // mainSection.classList.add("active");
+        mainSection.classList.add("active");
     }catch{}
     // RENDER DATA ON MAIN SECTION
 

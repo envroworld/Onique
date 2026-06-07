@@ -64,6 +64,7 @@ function renderData(dt, prev){
     let prevData
     try{prevData = JSON.parse(atob(prev)).data;}
     catch{prevData = dt.data}
+    getAlert(prevData)
     
     let percEl = document.querySelector(".balance .math span");
     let percValEl = document.querySelector(".balance .math i");

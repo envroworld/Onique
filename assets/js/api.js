@@ -127,12 +127,12 @@ function renderData(dt, prev){
 };
 async function isRegistered(){
     // RENDER DATA ON MAIN SECTION
-    try{
-        console.log("testing old dt")
-        let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
-        renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
-        mainSection.classList.add("active");
-    }catch{}
+    // try{
+        // console.log("testing old dt")
+        // let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
+        // renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
+        // mainSection.classList.add("active");
+    // }catch{}
     // RENDER DATA ON MAIN SECTION
 
 

@@ -55,7 +55,7 @@
                 <div class="flex">
                     <i class="fi fi-rr-wallet" onclick="getPop('withdraw')"></i>
                     <i class="fi fi-rr-link" onclick="copyShare(this)"></i>
-                    <img src="assets/images/dp/0.jpeg" class="dPic master-dp" alt="">
+                    <img src="assets/images/dp/0.jpeg" class="dPic master-dp" onclick="getPop('userStats')" alt="">
                 </div>
             </div>
             <div class="balance">
@@ -112,7 +112,6 @@
     <section class="popups abs" style="background-color: var(--bg-s3);z-index: 10;">
         <div class="popup otpVerify">
             <div class="shut" onclick="shutPop('otpVerify')"></div>
-            <!-- <i class="fi fi-rr-otp">OTP Verification</i> -->
             <p>Please provide the One-Time-Password ( OTP ), That was sent to your number. Didn't recieve code? <span>Resend.</span></p>
             <div class="otpInput">
                 <span></span>
@@ -123,16 +122,50 @@
             </div>
             <div class="button"><p>Confirm & Login</p></div>
         </div>
+        <div class="popup userStats">
+            <div class="shut" onclick="shutPop('userStats')"></div>
+            <div class="userBadge">
+                <img src="assets/images/dp/0.jpeg" style="height: 4vh;" alt="">
+                <div class="flex" style="flex-direction: column;flex: 1;gap: 3px;">
+                    <p class="refCode" code="#YzTzuahU"><span class="pro"></span></p>
+                    <h3 style="font-size: var(--f2);">+255712276166</h3>
+                </div>
+                <i class="fi fi-rr-link" style="font-size: var(--f2);height: 4vh;" onclick="copyShare(this)"></i>
+            </div>
+            <i class="fi fi-rr-link extraCopy">app.onique.space/<span>#YzTzuahU</span></i>
+            <div class="actions" style="margin-bottom: 1rem;">
+                <div class="toggle">
+                    <div class="data">
+                        <i class="fi fi-rr-bell">Push Notifications</i>
+                        <p>Get notified about software activity, ie. withdraws success, new referals e.t.c</p>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="toggle">
+                    <div class="data">
+                        <i class="fi fi-rr-inbox">SMS Notifications</i>
+                        <p>Get notified about system software updates, promotions, offers and other related information.</p>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="toggle">
+                    <div class="data">
+                        <i class="fi fi-rr-coins">Auto-Withdraws</i>
+                        <p>By enabling this feature, the app will perform withdraws everytime the amount is above Tsh. 35k</p>
+                    </div>
+                    <span></span>
+                </div>
+            </div>
+        </div>
         <div class="popup withdraw">
             <div class="shut" onclick="shutPop('withdraw')"></div>
-            <!-- <i class="fi fi-rr-otp">OTP Verification</i> -->
             <p>Please make sure the amount is not less than Tzs. 10k or more than Tzs. 6.5M. Having trouble with withdraws? <span>Contact Support.</span></p>
             <div class="input amount">
                 <p>Tzs.</p>
                 <input class="beforeFees" type="text" placeholder="Amount" inputmode="numeric">
             </div>
             <div class="amount-stats">
-                <p tag="Onique service fee (30%)">0.00/-</p>
+                <p tag="Onique service fee (25%)">0.00/-</p>
                 <p tag="Transaction fee (5%)">0.00/-</p>
                 <p tag="Final Amount">0.00/-</p>
             </div>

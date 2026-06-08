@@ -186,6 +186,12 @@ function loaderComponent(){
         document.querySelector(".loader").classList.remove("active");
     });
 };
+function toggleComponent(){
+    let allTg = document.querySelectorAll(".toggle");
+    allTg.forEach(tg=>{
+        tg.addEventListener("click", ()=>{tg.classList.toggle("active")});
+    })
+}
 function contextHandler(){
     window.addEventListener("context", ()=>{
         e.preventDefault();
@@ -310,3 +316,4 @@ otpComponent();
 blcComponent();
 amountComponent();
 feesComponent();
+toggleComponent();

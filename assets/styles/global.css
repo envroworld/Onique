@@ -49,14 +49,13 @@ p.more::before{
     padding-inline: var(--g4);
 }
 
-.popups .popup i{
+/* .popups .popup i{
     display: flex;
     align-items: center;
     gap: var(--g2);
     flex-shrink: 0;
     font-size: var(--f4);
     font-style: normal;
-    /* font-weight: 500; */
 }
 .popups .popup i::before{
     width: 10vw;
@@ -69,11 +68,7 @@ p.more::before{
     align-items: center;
     justify-content: center;
     font-size: var(--f3);
-    /* transform: rotateZ(-15deg) translate(-5%, 10%); */
-    /* box-shadow:
-        inset 2px 2px 2px -3px var(--tx-s3),
-        inset -3px -2px 2px -3px black; */
-}
+} */
 .popups .popup p:not(.button p){
     font-size: var(--f2);
     color: var(--tx-s3);
@@ -96,20 +91,47 @@ section.main .top-half{
     position: sticky;
     top: 0%;
 }
+.popup .userBadge,
 section.main .top-half .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.popup .userBadge{
+    gap: var(--g2);
+    /* border-bottom: 1px dotted var(--tx-s1); */
+}
+.popup .extraCopy{
+    display: flex;
+    align-items: center;
+    padding: var(--g2) var(--g2);
+    margin-bottom: var(--g2);
+    gap: var(--g2);
+    background-color: var(--tx-s0);
+    border-radius: var(--g8);
+    font-size: var(--f2);
+    color: var(--tx-s3);
+    box-shadow:
+        inset -2px 2px 2px -3px var(--tx-s3),
+        inset 2px -2px 2px -3px  var(--tx-s3);
+}
+.popup .extraCopy span{
+    margin-left: calc(0rem  - var(--g2));
+    color: var(--tx-s3);
+    font-size: var(--f2);
+}
+.userBadge img,
 section.main .top-half .header img{
     height: 5vh;
 }
+.userBadge img,
 section.main .top-half .header img.dPic{
     aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
 }
+.userBadge i,
 section.main .top-half .header i{
     height: 5vh;
     font-size: var(--f3);
@@ -294,6 +316,7 @@ section.main .top-half .quick-stats .stat i{
     font-size: var(--f4);
     flex: 1;
 }
+.userBadge p,
 section.main .top-half .quick-stats .stat p{
     font-size: var(--f2);
     color: var(--tx-s2);
@@ -303,6 +326,7 @@ section.main .top-half .quick-stats .stat p span{
     color: var(--tx-s3);
     padding-bottom: var(--g2);
 }
+.userBadge h3,
 section.main .top-half .quick-stats .stat h3{
     font-size: var(--f3);
     font-weight: 400;
@@ -431,4 +455,53 @@ section.main .transactions .tx-card h3.loss{
 .balance.loaderBlc p:not(h2 p){
     color: var(--tx-s2);
     font-size: var(--f2);
+}
+
+.userStats .refCode{
+    display: flex;
+    align-items: center;
+    gap: var(--g1);
+}
+.userStats .refCode::before{
+    content: attr(code);
+}
+.userStats .refCode span{
+    padding: 1px var(--g2);
+    border-radius: var(--g4);
+    margin-top: -2px;
+    background-color: var(--tx-s1);
+    color: var(--tx-s3) !important;
+    box-shadow:
+        inset 1px 1px 2px -1px var(--tx-s3),
+        inset 1px -1px 1px -1px  var(--tx-s3);
+    overflow: hidden;
+}
+.userStats .refCode span::before{
+    content: attr(class);
+    text-transform: capitalize;
+}
+
+@keyframes toRRR {
+    0%{left: -100%;}
+    25%{left: 250%;}
+    100%{left: 250%;}
+}
+
+.userStats .refCode span::after{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 200%;
+    top: 50%;
+    left: -100%;
+    background-color: var(--tx-s2);
+    transform: rotateZ(30deg) translateY(-50%);
+    filter: saturate(1.5) contrast(1.2);
+    animation: toRRR 4s ease infinite;
+}
+.userStats .refCode span.average{
+    background-color: var(--cp-s1);
+}
+.userStats .refCode span.pro{
+    background: linear-gradient(20deg, var(--rd), var(--cp-s2), var(--cp-s1));
 }

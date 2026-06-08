@@ -4,6 +4,7 @@
     --tx: #ebf0f7;
     --cp: #6642d1;
     --gr: #50d0c7;
+    --rd: #d05050;
 
     /* SHADE COLORS */
     --bg-s1: #1011111a;
@@ -17,6 +18,9 @@
 
     --cp-s1: #6642d113;
     --cp-s2: #6642d18b;
+
+    --gr-s1: #50d0c81e;
+    --gr-s2: #50d0c854;
 
     /* PADDING / GAPS  */
     --g1: 0.25rem;
@@ -355,4 +359,53 @@ i.alertMsg.active{
     pointer-events: unset;
     opacity: 1;
     bottom: 2.5%;
+}
+
+
+/* TOGGLE COMPONENTS */
+
+.popup .actions{
+    display: flex;
+    flex-direction: column;
+    gap: var(--g6);
+}
+.popup .actions .toggle{
+    display: flex;
+    gap: var(--g8);
+}
+.popup .actions .data{
+    display: flex;
+    flex-direction: column;
+    gap: var(--g1);
+    flex: 1;
+}
+.popup .actions .data i{
+    display: flex;
+    align-items: center;
+    gap: var(--g1);
+    font-size: var(--f2);
+    font-style: normal;
+}
+.popup .actions .toggle span{
+    display: flex;
+    height: fit-content;
+    padding: 2px;
+    padding-right: var(--g3);
+    background-color: var(--tx-s1);
+    border-radius: var(--g8);
+    transition: all 0.2s ease;
+}
+.popup .actions .toggle span::before{
+    content: "";
+    width: var(--g5);
+    height: var(--g4);
+    border-radius: var(--g8);
+    background-color: var(--bg);
+    box-shadow:
+        inset 2px 2px 2px -3px var(--tx-s3);
+}
+.popup .actions .toggle.active span{
+    padding-left: var(--g3);
+    padding-right: 2px;
+    background-color: var(--gr);
 }

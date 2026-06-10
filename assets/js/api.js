@@ -69,6 +69,8 @@ function renderData(dt, prev){
     let percValEl = document.querySelector(".balance .math i");
     let quickStats = document.querySelectorAll(".quick-stats .stat h3");
     let transactionskEl = document.querySelector(".transactions");
+    let codeDp = document.querySelector(".userBadge .refCode");
+    let levelDp = codeDp.querySelector("span");
 
     // TRANSACTIONS HANDLING
     transactionskEl.innerHTML = `<p class="title" style="font-size: var(--f2);color: var(--tx-s2);text-align: center;">Recent Transactions</p>`
@@ -114,6 +116,14 @@ function renderData(dt, prev){
     quickStats[2].textContent = numComma(dt.data.first);
     quickStats[3].textContent = numComma(dt.data.second);
 
+    let level = dt.data.first + dt.data.second;
+    let levelNm = "begginer"
+    if(level >= 10){levelNm = "average"};
+    if(level >= 100){levelNm = "pro"};
+
+    codeDp.setAttribute("code", `#${dt.data.referal_code}`);
+    levelDp.className = levelNm;
+
     // quickStats[0].textContent = `Tzs. ${numComma(400500)}`;
     // quickStats[1].textContent = `Tzs. ${numComma(125000)}`;
     // quickStats[2].textContent = numComma(50);
@@ -128,13 +138,18 @@ function renderData(dt, prev){
 async function isRegistered(){
     let mainSection = document.querySelector("section.main");
     let phone = localStorage.getItem(LOCALSTORAGE_PHONE) || null;
-    if(phone == null) return false
+    if(phone == null) return false;
     
-    phone = btoa(phone)
+    phone = btoa(phone);
+    let imgUrl = String(Number(phone.slice(phone.length - 2, phone.length)) % 25);
     
-    let dp = document.querySelector("img.master-dp")
-    let imgUrl = String(Number(phone.slice(phone.length - 2, phone.length)) % 25)
+    let dp = document.querySelector("img.master-dp");
+    let dp1 = document.querySelector(".userBadge img");
+    let phoneDp = document.querySelector(".userBadge .flex h3");
+
     dp.src = `assets/images/dp/${imgUrl}.jpeg`;
+    dp1.src = `assets/images/dp/${imgUrl}.jpeg`;
+    phoneDp.textContent = `+${phone}`;
 
     let rq = await fetch(`${API_URL}/userinfo`, {
         method: "POST",

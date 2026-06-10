@@ -62,7 +62,7 @@ function initRegistration(){
 };
 function renderData(dt, prev){
     let prevData
-    try{prevData = JSON.parse(atob(prev)).data;}
+    try{prevData = JSON.parse(atob(prev));}
     catch{prevData = dt.data}
     
     let percEl = document.querySelector(".balance .math span");
@@ -126,16 +126,6 @@ function renderData(dt, prev){
     }, 3000)
 };
 async function isRegistered(){
-    // RENDER DATA ON MAIN SECTION
-    try{
-        console.log("testing old dt")
-        let old_dt = JSON.parse(atob(localStorage.getItem(LOCALSTORAGE_DATA)));
-        renderData(old_dt, localStorage.getItem(LOCALSTORAGE_DATA));
-        mainSection.classList.add("active");
-    }catch{}
-    // RENDER DATA ON MAIN SECTION
-
-
     let mainSection = document.querySelector("section.main");
     let phone = localStorage.getItem(LOCALSTORAGE_PHONE) || null;
     if(phone == null) return false
@@ -156,7 +146,7 @@ async function isRegistered(){
         })
     })
     let dt = await rq.json()
-    let new_dt = btoa(JSON.stringify(dt))
+    let new_dt = btoa(JSON.stringify(dt["data"]))
     
     // RENDER DATA ON MAIN SECTION
     try{

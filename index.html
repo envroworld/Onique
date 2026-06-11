@@ -20,20 +20,6 @@
     <section class="login">
         <div style="flex: 1;max-height: 45vh;display: flex;align-items: center;">
             <img src="assets/videos/onboard.png" style="width: 100vw;filter: saturate(1.5);mix-blend-mode: color-dodge;" alt="">
-            <!-- <video preload="auto" autoplay playsinline webkit-playsinline muted loop style="max-width: 90vw;width: 50vw;scale: 1.5;mix-blend-mode: color-dodge;pointer-events: none;transform: rotateZ(75deg);">
-                <source  src="assets/videos/onboard1.mp4" type="video/mp4">
-            </video> -->
-            <script>
-                window.addEventListener("load", ()=>{
-                   let v = document.querySelector("video");
-                //    v.play()
-                   v.muted = true;
-                   v.playsInline = true;
-                   setTimeout(()=>{
-                       v.play().catch(e => {alert(e)})
-                   }, 5000)
-                })
-            </script>
         </div>
         <img class="logo" src="assets/images/logo3.png" alt="">
         <div class="input">
@@ -110,6 +96,24 @@
     </section>
 
     <section class="popups abs" style="background-color: var(--bg-s3);z-index: 10;">
+        <div class="popup amCharge">
+            <video preload="auto" autoplay playsinline webkit-playsinline muted loop style="max-height: 10vh;width: 100%;object-position: center;object-fit: cover;border-radius: var(--g4);">
+                <source  src="assets/videos/wallet.mp4" type="video/mp4">
+            </video>
+            <p>To enable your Dashboard or Login to your account, This amount will be charged from your <span>Mobile Money</span> account. press "Continue" to proceed.</p>
+            <div class="balance chargeBlc">
+                <h2 currency="Tzs." class="charged">
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <p>0123456789</p>
+                    <span>.0</span>
+                    <span>0</span>
+                </h2>
+            </div>
+            <div class="button superContinue"><p>Continue</p></div>
+        </div>
         <div class="popup otpVerify">
             <div class="shut" onclick="shutPop('otpVerify')"></div>
             <p>Please provide the One-Time-Password ( OTP ), That was sent to your number. Didn't recieve code? <span>Resend.</span></p>

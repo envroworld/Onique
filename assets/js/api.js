@@ -1,6 +1,8 @@
 function initRegistration(){
-    let trigger = document.querySelector(".button.register");
-    trigger.addEventListener("click", async ()=>{
+    let trigger = document.querySelector(".button.superContinue");
+    let checker = document.querySelector(".button.register");
+
+    checker.addEventListener("click", ()=>{
         let inp = document.querySelector(".input input.linker");
 
         if(inp.value.length < 9){
@@ -11,8 +13,13 @@ function initRegistration(){
             getAlert("M-Pesa is not supported, try different MNO.")
             return
         }
-
+        getPop("amCharge");
+        setTimeout(()=>{setBalance(7000, 'charged')}, 1500);
+    })
+    trigger.addEventListener("click", async ()=>{
         trigger.classList.add("active");
+        let inp = document.querySelector(".input input.linker");
+
         let rq = await fetch(`${API_URL}/register`, {
             method: "POST",
             headers: {
@@ -42,6 +49,7 @@ function initRegistration(){
                 })
                 let dt1 = await rq1.json()
                 getAlert(dt1.message)
+                shutPop("amCharge");
                 if(dt1.success == false) {
                     clearInterval(intVal)
                     trigger.classList.remove("active")

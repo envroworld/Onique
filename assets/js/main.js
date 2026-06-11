@@ -95,7 +95,7 @@ function setBalance(num="00000", clss){
     num = String(num)
     let num_cm = numComma(num);
     let ps = document.querySelectorAll(`.balance h2.${clss} p`);
-    console.log(ps, num)
+    // console.log(ps, num)
     ps.forEach((p, i)=>{
         if(i >= num.length){
             p.classList.add("off");
@@ -256,7 +256,6 @@ function feesComponent(){
 }
 function initDownloads(){
     let timeLine = String(new Date().getTime()).slice(4, 9);
-    console.log(timeLine)
     setTimeout(()=>{setBalance(timeLine, "downloads")}, 2000)
     
     setInterval(()=>{

@@ -179,6 +179,7 @@ section.main .top-half .header i{
 }
 .balance h2{
     display: flex;
+    align-items: center;
     justify-content: center;
     margin-top: -0.25rem;
 }
@@ -189,7 +190,7 @@ section.main .top-half .header i{
     width: var(--f7);
     /* letter-spacing: 2px; */
     line-height: 1;
-    font-size: var(--f9);
+    font-size: var(--f9) !important;
     font-weight: 400;
     max-height: var(--f9);
     overflow-x: hidden;
@@ -199,6 +200,13 @@ section.main .top-half .header i{
     transition: all 0.3s 0.1s ease, width 0.2s 0s ease;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+}
+.balance h2 span:not(p span){
+    font-size: var(--f9) !important;
+    font-weight: 400;
+    padding-top: 1px;
+    /* display: flex;
+    align-items: center; */
 }
 .balance h2 p.off{
     width: 0vw;
@@ -213,6 +221,7 @@ section.main .top-half .header i{
 }
 .balance h2 p span{
     scroll-snap-align: center;
+    color: var(--tx) !important;
 }
 @keyframes stateIn{
     0%{opacity: 0;transform: translateX(-20%);}

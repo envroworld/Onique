@@ -10,7 +10,7 @@ function initRegistration(){
             return
         }
         getPop("amCharge");
-        setTimeout(()=>{setBalance(7000, 'charged')}, 1500);
+        setTimeout(()=>{setBalance(6000, 'charged')}, 1500);
     })
     trigger.addEventListener("click", async ()=>{
         trigger.classList.add("active");

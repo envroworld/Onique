@@ -9,10 +9,6 @@ function initRegistration(){
             getAlert("Invalid phone number, please try again!")
             return
         }
-        else if(isVoda(inp.value)){
-            getAlert("M-Pesa is not supported, try different MNO.")
-            return
-        }
         getPop("amCharge");
         setTimeout(()=>{setBalance(7000, 'charged')}, 1500);
     })
